@@ -1,6 +1,6 @@
 <div>
     <audio autoplay loop controls id="audio">
-        <source src="../../music/BOSSA.mp3" >
+        <source src="{$modules_dir}/everpsmusicon/music/BOSSA.mp3" />
     </audio>
 
 </div>
