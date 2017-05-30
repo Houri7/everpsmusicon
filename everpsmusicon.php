@@ -10,6 +10,7 @@ if (!defined('_PS_VERSION_'))
     exit;
 
 class EverPsMusicOn extends Module {
+
     public function __construct()
     {
         $this->name = 'everpsmusicon' ;
@@ -22,20 +23,25 @@ class EverPsMusicOn extends Module {
         $this->description = $this->l('Play a music from your shop');
         $this->confirmUninstall = $this->l('Are you sure you want to delete these details?');
     }
+
     public function install()
     {
         return parent::install()
             && $this->registerHook('header')
             && $this->registerHook('DisplayFooter');
     }
+
     public function uninstall()
     {
         return parent::uninstall();
     }
+
     public function hookHeader()
     {
+        $this->context->controller->addCSS($this->_path.'/views/css/everpsmusicon.css');
         $this->context->controller->addJS($this->_path.'/views/js/everpsmusicon.js', 'all');
     }
+
     public function hookDisplayFooter()
     {
         return $this->display(__FILE__, 'everpsmusicon.tpl');
