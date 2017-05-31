@@ -4,17 +4,24 @@ $(document).ready(function(){
     var everMusicPlayer = $('#ever_audio')[0];
     var play_pause_button = $('.ever-music-button');
 
+    // save the player currentTime every 2 sec
     setInterval(function() {
         sessionStorage.setItem('ever-music-current', everMusicPlayer.currentTime);
     }, 2000);
 
     // check in session storage if the player must play
     if (sessionStorage.getItem('ever-music-pause') === 'true') {
-        everMusicPlayer.currentTime = parseFloat(sessionStorage.getItem('ever-music-current'));
+        // make sure the metadata are loaded before set the currentTime
+        everMusicPlayer.addEventListener('loadedmetadata', function() {
+            everMusicPlayer.currentTime = parseFloat(sessionStorage.getItem('ever-music-current'));
+        }, false);
         everMusicPlayer.pause();
         play_pause_button.html('<i class="icon-play"></i>');
     } else {
-        everMusicPlayer.currentTime = parseFloat(sessionStorage.getItem('ever-music-current'));
+        // make sure the metadata are loaded before set the currentTime
+        everMusicPlayer.addEventListener('loadedmetadata', function() {
+            everMusicPlayer.currentTime = parseFloat(sessionStorage.getItem('ever-music-current'));
+        }, false);
         everMusicPlayer.play();
         play_pause_button.html('<i class="icon-pause"></i>');
     }
