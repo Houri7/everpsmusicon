@@ -16,14 +16,14 @@ $(document).ready(function(){
             everMusicPlayer.currentTime = parseFloat(sessionStorage.getItem('ever-music-current'));
         }, false);
         everMusicPlayer.pause();
-        play_pause_button.html('<i class="icon-play"></i>');
+        play_pause_button.html('<i class=" fa fa-play"></i>');
     } else {
         // make sure the metadata are loaded before set the currentTime
         everMusicPlayer.addEventListener('loadedmetadata', function() {
             everMusicPlayer.currentTime = parseFloat(sessionStorage.getItem('ever-music-current'));
         }, false);
         everMusicPlayer.play();
-        play_pause_button.html('<i class="icon-pause"></i>');
+        play_pause_button.html('<i class="fa fa-pause"></i>');
     }
 
     // bind the play/pause button
@@ -31,11 +31,11 @@ $(document).ready(function(){
         if (everMusicPlayer.paused == false) {
             everMusicPlayer.pause();
             sessionStorage.setItem('ever-music-pause', 'true');
-            play_pause_button.html('<i class="icon-play"></i>');
+            play_pause_button.html('<i class=" fa fa-play"></i>');
         } else {
             everMusicPlayer.play();
             sessionStorage.setItem('ever-music-pause', 'false');
-            play_pause_button.html('<i class="icon-pause"></i>');
+            play_pause_button.html('<i class="fa fa-pause"></i>');
         }
     });
 });
